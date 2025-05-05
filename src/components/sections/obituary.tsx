@@ -1,8 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { FileEdit } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { motion } from "motion/react";
+import { CardHeading } from "../elements/card-heading";
 
 export const ObituarySection = () => {
   const container = {
@@ -22,7 +23,7 @@ export const ObituarySection = () => {
 
   return (
     <motion.div
-      className="max-w-6xl mx-auto"
+      className="max-w-7xl mx-auto"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -33,14 +34,14 @@ export const ObituarySection = () => {
         className="flex flex-col md:flex-row items-center gap-12"
       >
         <div className="flex-1 order-2 md:order-1">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
-            <FileEdit className="h-8 w-8 text-primary" />
+          <motion.h2 className="font-bold mb-6 flex items-center gap-3">
+            <Icon icon="lucide:file-edit" />
             Obituary Writer
           </motion.h2>
 
           <Card className="bg-card/50 backdrop-blur-sm border-none shadow-lg">
             <CardContent>
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed">
                 FinalSpaces helps funeral homes and individuals research the
                 deceased, draft thoughtful obituaries based on personal
                 characteristics, and facilitates a collaborative, human-centered
@@ -70,14 +71,7 @@ function ObituaryWriterDemo() {
       viewport={{ once: false }}
     >
       <div className="absolute inset-0 p-6 flex flex-col">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-          <div className="ml-2 text-xs text-muted-foreground">
-            Obituary Writer
-          </div>
-        </div>
+        <CardHeading title="Obituary Writer" />
 
         <motion.div
           className="flex-1 flex flex-col"

@@ -23,7 +23,7 @@ export const ContactSection = () => {
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
           <Input
-            id="email"
+            name="email"
             type="email"
             placeholder="your@email.com"
             value={email}
@@ -33,7 +33,7 @@ export const ContactSection = () => {
         <div className="space-y-2">
           <Label htmlFor="message">Message</Label>
           <Textarea
-            id="message"
+            name="message"
             placeholder="Your message..."
             className="min-h-32"
             value={message}

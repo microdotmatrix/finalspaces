@@ -1,8 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote } from "lucide-react";
 import { motion } from "motion/react";
+import { CardHeading } from "../elements/card-heading";
+import { Icon } from "../ui/icon";
 
 export const QuotesSection = () => {
   const container = {
@@ -22,7 +23,7 @@ export const QuotesSection = () => {
 
   return (
     <motion.div
-      className="max-w-6xl mx-auto"
+      className="max-w-7xl mx-auto"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -37,14 +38,14 @@ export const QuotesSection = () => {
         </div>
 
         <div className="flex-1">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
-            <Quote className="h-8 w-8 text-primary" />
+          <motion.h2 className="font-bold mb-6 flex items-center gap-3">
+            <Icon icon="lucide:quote" />
             Quote Generator
           </motion.h2>
 
           <Card className="bg-card/50 backdrop-blur-sm border-none shadow-lg">
             <CardContent>
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed text-pretty">
                 Many people struggle to find the perfect words to encapsulate
                 their loved one's spirit and legacy. FinalSpaces analyzes the
                 individual's characteristics and life story to suggest
@@ -69,14 +70,7 @@ function QuoteGeneratorDemo() {
       viewport={{ once: true }}
     >
       <div className="absolute inset-0 p-6 flex flex-col">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-          <div className="ml-2 text-xs text-muted-foreground">
-            Quote Generator
-          </div>
-        </div>
+        <CardHeading title="Quote Generator" />
 
         <motion.div
           className="flex-1 flex flex-col gap-4"

@@ -1,8 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { ImageIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { motion } from "motion/react";
+import { CardHeading } from "../elements/card-heading";
 
 export const MemorialSection = () => {
   const container = {
@@ -22,7 +23,7 @@ export const MemorialSection = () => {
 
   return (
     <motion.div
-      className="max-w-6xl mx-auto"
+      className="max-w-7xl mx-auto"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -33,14 +34,14 @@ export const MemorialSection = () => {
         className="flex flex-col md:flex-row items-center gap-12"
       >
         <div className="flex-1 order-2 md:order-1">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
-            <ImageIcon className="h-8 w-8 text-primary" />
-            Memorial Card/Image Creator
+          <motion.h2 className="text-3xl md:text-xl lg:text-3xl font-bold mb-6 flex items-center gap-3">
+            <Icon icon="lucide:image" />
+            Memorial Creator
           </motion.h2>
 
           <Card className="bg-card/50 backdrop-blur-sm border-none shadow-lg">
             <CardContent>
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed">
                 Our image creation tool combines cherished photographs,
                 meaningful quotes, and service information to help you easily
                 design memorial cards and graphics. These personalized visual
@@ -69,14 +70,7 @@ function MemorialCardDemo() {
       viewport={{ once: true }}
     >
       <div className="absolute inset-0 p-6 flex flex-col">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-          <div className="ml-2 text-xs text-muted-foreground">
-            Memorial Card Creator
-          </div>
-        </div>
+        <CardHeading title="Memorial Card Creator" />
 
         <motion.div
           className="flex-1 flex items-center justify-center"
@@ -86,7 +80,7 @@ function MemorialCardDemo() {
           viewport={{ once: false }}
         >
           <motion.div
-            className="w-64 h-96 bg-gradient-to-b from-primary/5 to-primary/20 rounded-lg shadow-lg relative overflow-hidden"
+            className="w-80 h-96 bg-gradient-to-b from-muted/5 to-primary/10 rounded-lg shadow-lg relative overflow-hidden"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -95,8 +89,8 @@ function MemorialCardDemo() {
             <div className="absolute inset-0 flex flex-col">
               <div className="h-40 bg-primary/10 relative">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-background/80 flex items-center justify-center">
-                    <ImageIcon className="h-10 w-10 text-primary/50" />
+                  <div className="w-20 h-20 rounded-full bg-background/75 flex items-center justify-center">
+                    <Icon icon="carbon:image" className="size-10 opacity-50" />
                   </div>
                 </div>
               </div>

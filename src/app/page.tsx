@@ -10,17 +10,17 @@ export default function Home() {
       <HeroSection />
 
       {/* Obituary Writer Section */}
-      <section className="py-24 px-4 md:px-6">
+      <section id="obituary-writer" className="py-24 px-4 md:px-6">
         <ObituarySection />
       </section>
 
       {/* Quote Generator Section */}
-      <section className="py-24 px-4 md:px-6 bg-muted/25">
+      <section id="quote-generator" className="py-24 px-4 md:px-6 bg-muted/25">
         <QuotesSection />
       </section>
 
       {/* Memorial Card/Image Creator Section */}
-      <section className="py-24 px-4 md:px-6">
+      <section id="memorial-card" className="py-24 px-4 md:px-6">
         <MemorialSection />
       </section>
     </main>

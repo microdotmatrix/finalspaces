@@ -1,59 +1,105 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Image from "next/image";
+import { useState } from "react";
+import { Icon } from "../ui/icon";
+
+const MotionImage = motion.create(Image, { forwardMotionProps: true });
 
 export const HeroSection = () => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center justify-center px-4 md:px-6 py-12 text-center"
+      className="min-h-screen flex flex-col items-center justify-end px-4 md:px-6 py-12 text-center relative z-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8"
-      >
-        <div className="w-24 h-24 md:w-32 md:h-32 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-          <span className="text-4xl md:text-5xl font-bold text-primary">
-            FS
-          </span>
-        </div>
-      </motion.div>
+      <Image
+        src="/images/fs-img_02.jpg"
+        alt="FinalSpaces"
+        fill
+        className={cn(
+          "object-cover z-[-1] mask-b-from-25% mask-b-to-90% opacity-75 transition-all duration-1000 delay-200 ease-out",
+          loaded ? "blur-none scale-100" : "blur-xl opacity-0 scale-110"
+        )}
+        onLoad={() => setLoaded(true)}
+      />
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-0 lg:mb-8"
+        >
+          <div className="size-32 md:size-48 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+            <span className="text-4xl md:text-5xl font-bold text-primary">
+              FS
+            </span>
+          </div>
+        </motion.div>
 
-      <motion.h1
-        className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        FinalSpaces
-      </motion.h1>
+        <motion.h1
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 uppercase font-sans"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          FinalSpaces
+        </motion.h1>
+      </div>
 
-      <motion.p
-        className="max-w-3xl text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      >
-        FinalSpaces combines compassion, experience in the grieving process, and
-        advanced technology to make the process of dying less overwhelming. When
-        you use FinalSpaces tools, you transform a difficult experience into one
-        that's more manageable and meaningful.
-      </motion.p>
+      <div className="flex flex-col items-center justify-center lg:mb-12">
+        <motion.p
+          className="max-w-3xl text-base md:text-lg text-secondary-foreground/60 mb-8 text-balance"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          FinalSpaces combines compassion, experience in the grieving process,
+          and advanced technology to help people prepare and work through the
+          administrative burden that accompanies death in our current time. When
+          you use FinalSpaces tools, you transform a difficult experience into
+          one that's more manageable and meaningful.
+        </motion.p>
 
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
-        <Button size="lg" className="text-lg">
-          Join Waitlist
-        </Button>
-      </motion.div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="flex items-center gap-4"
+        >
+          <Button
+            size="lg"
+            className="text-base md:text-lg md:px-12 md:py-8 shadow-lg shadow-sky-300/40 hover:shadow-sky-400/50 transition-shadow duration-500"
+          >
+            Join Waitlist
+          </Button>
+          <Button
+            size="lg"
+            variant="ghost"
+            className="text-base md:text-lg md:px-12 md:py-8"
+          >
+            <a href="#obituary-writer" className="flex items-center gap-2">
+              Learn More
+              <motion.span
+                initial={{ y: -40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.25, duration: 0.25 }}
+              >
+                <Icon
+                  icon="carbon:arrow-down"
+                  className="size-8 mt-2 text-muted-foreground/50 animate-bounce"
+                />
+              </motion.span>
+            </a>
+          </Button>
+        </motion.div>
+      </div>
     </motion.section>
   );
 };
