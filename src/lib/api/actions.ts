@@ -1,0 +1,36 @@
+"use server";
+
+import { EmailTemplate } from "@/components/elements/email-template";
+import { resend } from "./email";
+
+export type ActionState = {
+  error?: string;
+  success?: string;
+  [key: string]: any; // This allows for additional properties
+};
+
+export async function emailAction(
+  prevState: ActionState,
+  formData: FormData
+): Promise<ActionState> {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const message = formData.get("message") as string;
+
+  if (!name || !email || !message) {
+    return { error: "Missing name, email, or message" };
+  }
+
+  try {
+    await resend.emails.send({
+      from: `FinalSpaces <${process.env.RESEND_EMAIL_FROM as string}>`,
+      to: [process.env.RESEND_EMAIL_TO as string],
+      subject: "New message from FinalSpaces",
+      react: EmailTemplate({ name, email, message }) as React.ReactElement,
+    });
+    return { success: "Email sent successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to send email" };
+  }
+}

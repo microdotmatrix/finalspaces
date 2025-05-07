@@ -7,8 +7,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { Icon } from "../ui/icon";
 
-const MotionImage = motion.create(Image, { forwardMotionProps: true });
-
 export const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);
 

@@ -1,34 +1,14 @@
-"use client";
-
-import { motion } from "motion/react";
+import { PageHeading } from "@/components/elements/page-heading";
+import { ReturnHome } from "@/components/elements/return-home";
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen">
       {/* Header Section */}
-      <motion.section
-        className="py-24 px-4 md:px-6 flex flex-col items-center justify-center text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6 uppercase font-sans"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          TERMS OF SERVICE
-        </motion.h1>
-        <motion.p
-          className="text-base md:text-lg text-secondary-foreground/60 mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          Last Updated: April 29, 2025
-        </motion.p>
-      </motion.section>
+      <PageHeading
+        heading="Terms of Service"
+        subheading="Last Updated: April 29, 2025"
+      />
 
       {/* Terms Content */}
       <section className="py-12 px-4 md:px-6 max-w-4xl mx-auto">
@@ -428,29 +408,7 @@ export default function TermsPage() {
 
       {/* Back to Home */}
       <section className="py-12 px-4 md:px-6 flex justify-center">
-        <motion.a
-          href="/"
-          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-5"
-          >
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
-          Back to Home
-        </motion.a>
+        <ReturnHome />
       </section>
     </main>
   );
