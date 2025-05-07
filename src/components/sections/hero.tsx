@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
+import { WaitlistSignup } from "../elements/waitlist-signup";
 import { Icon } from "../ui/icon";
 
 export const HeroSection = () => {
@@ -71,12 +72,7 @@ export const HeroSection = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="flex items-center gap-4"
         >
-          <Button
-            size="lg"
-            className="text-base md:text-lg md:px-12 md:py-8 shadow-lg shadow-sky-300/40 hover:shadow-sky-400/50 transition-shadow duration-500"
-          >
-            Join Waitlist
-          </Button>
+          <WaitlistSignup />
           <Button
             size="lg"
             variant="ghost"

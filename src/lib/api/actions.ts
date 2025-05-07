@@ -1,7 +1,7 @@
 "use server";
 
 import { EmailTemplate } from "@/components/elements/email-template";
-import { resend } from "./email";
+import { mailchimp, resend } from "./email";
 
 export type ActionState = {
   error?: string;
@@ -32,5 +32,24 @@ export async function emailAction(
   } catch (error) {
     console.error(error);
     return { error: "Failed to send email" };
+  }
+}
+
+export async function waitlistAction(
+  prevState: ActionState,
+  formData: FormData
+): Promise<ActionState> {
+  const email = formData.get("email") as string;
+
+  if (!email) {
+    return { error: "Missing email" };
+  }
+
+  try {
+    await mailchimp({ email });
+    return { success: "Email added to waitlist successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to add email to waitlist" };
   }
 }
